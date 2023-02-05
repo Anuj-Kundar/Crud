@@ -1,48 +1,58 @@
-<ng-template #content let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
-    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">Laravel Sample</a>
+  <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="openModal()">Add Products</button>
+</nav>
+
+
+<div class="modal"  [ngClass]="isOpen ? 'open-modal' : '' "tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Products</h5>
+      </div>
+      <div class="modal-body">
+
+        
+            <form>
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" [(ngModel)]="name" [ngModelOptions]="{standalone: true}" class="form-control" id="name"
+                  placeholder="Enter Name">
+        
+              </div>
+        
+              <div class="form-group">
+                <label>Description</label>
+                <input type="text" [(ngModel)]="description" [ngModelOptions]="{standalone: true}" class="form-control"
+                  id="description" placeholder="Enter product description">
+        
+              </div>
+        
+              <div class="form-group">
+                <label>Price</label>
+                <input type="text" [(ngModel)]="price" [ngModelOptions]="{standalone: true}" class="form-control" id="price"
+                  placeholder="Product Price">
+        
+              </div>
+        
+              <div class="form-group">
+                <label>Product Qty</label>
+                <input type="text" [(ngModel)]="quantity" [ngModelOptions]="{standalone: true}" class="form-control"
+                  id="quantity" placeholder="Product Quantity">
+        
+              </div>
+        
+              <button type="submit" class="btn btn-primary mt-4" (click)="save()">Submit</button>
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Close</button>
+      </div>
+    </div>
   </div>
+</div>
 
-</ng-template>
 
-<div class="container mt-4">
-
-  <div class="card">
-
-    <form>
-      <div class="form-group">
-        <label>Name</label>
-        <input type="text" [(ngModel)]="name" [ngModelOptions]="{standalone: true}" class="form-control" id="name"
-          placeholder="Enter Name">
-
-      </div>
-
-      <div class="form-group">
-        <label>Description</label>
-        <input type="text" [(ngModel)]="description" [ngModelOptions]="{standalone: true}" class="form-control"
-          id="description" placeholder="Enter product description">
-
-      </div>
-
-      <div class="form-group">
-        <label>Price</label>
-        <input type="text" [(ngModel)]="price" [ngModelOptions]="{standalone: true}" class="form-control" id="price"
-          placeholder="Product Price">
-
-      </div>
-
-      <div class="form-group">
-        <label>Product Qty</label>
-        <input type="text" [(ngModel)]="quantity" [ngModelOptions]="{standalone: true}" class="form-control"
-          id="quantity" placeholder="Product Quantity">
-
-      </div>
-
-      <button type="submit" class="btn btn-primary mt-4" (click)="save()">Submit</button>
-    </form>
-  </div>
-  <div>
 
 
     <div class="container mt-4">
@@ -61,9 +71,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let ProductItem of ProductArray">
+          <tr *ngFor="let ProductItem of ProductArray; let i = index">
 
-            <th scope="row">{{ProductItem.id  }}</th>
+            <th scope="row">{{i+1}}</th>
             <td>{{ProductItem.name  | uppercase}}</td>
             <td>{{ProductItem.description }}</td>
             <td>{{ProductItem.price }}</td>
@@ -71,7 +81,7 @@
 
             <td>
               <button type="button" class="btn btn-success" (click)="setUpdate(ProductItem)">Edit</button>
-
+              &nbsp;
               <button type="button" class="btn btn-danger" (click)="setDelete(ProductItem)">Delete</button>
 
             </td>

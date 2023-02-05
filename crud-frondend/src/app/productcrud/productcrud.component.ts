@@ -12,7 +12,7 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 export class ProductcrudComponent implements OnInit {
 
-  content:boolean = false;
+  isOpen:boolean = false;
 
   ProductArray : any[] = [];
   isResultLoaded = false;
@@ -78,6 +78,7 @@ export class ProductcrudComponent implements OnInit {
    this.price = data.price;
    this.quantity = data.quantity;
    this.currentProductID = data.id;
+    this.isOpen=true;
   }
 
   UpdateRecords()
@@ -113,7 +114,7 @@ export class ProductcrudComponent implements OnInit {
       {
        this.UpdateRecords();
       }       
-
+    this.isOpen=false;
   }
 
 
@@ -129,5 +130,12 @@ export class ProductcrudComponent implements OnInit {
    
     });
 
+  }
+
+  openModal(){
+    this.isOpen=true;
+  }
+  closeModal(){
+    this.isOpen=false;
   }
 }
