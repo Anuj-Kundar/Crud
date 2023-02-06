@@ -93,7 +93,7 @@ export class ProductcrudComponent implements OnInit {
     this.http.put("http://127.0.0.1:8000/api/update"+ "/"+ this.currentProductID,bodyData).subscribe((resultData: any)=>
     {
         console.log(resultData);
-        alert("Product Registered Updateddd")
+        alert("Product Registered Updated")
         this.getAllProduct();
         this.name = '';
         this.description = '';
@@ -134,7 +134,7 @@ export class ProductcrudComponent implements OnInit {
 
   openModal(){
     this.isOpen=true;
-  }
+  } 
   closeModal(){
     this.isOpen=false;
   }
