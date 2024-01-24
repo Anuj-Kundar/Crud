@@ -18,7 +18,7 @@ What things you need to install the software and how to install them
 - npm (Node Package Manager)
 - Angular CLI
 
-## Serve the Application
+## Run the Application
 
 To run the CRUD application, start the Laravel development server using the following command:
 
